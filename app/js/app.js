@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'react-dom'
+import ReactDOM from 'react-dom'
 import { browserHistory, Router, Route, Link, withRouter } from 'react-router'
 
 const App = React.createClass({
@@ -14,15 +14,15 @@ const App = React.createClass({
 	      </div>
 	    )
 	  }
-	})
+})
 
-	const Dashboard = React.createClass({
+const Dashboard = React.createClass({
 	  render() {
 	    return <h1>Dashboard</h1>
 	  }
-	})
+})
 
-	const Form = withRouter(
+const Form = withRouter(
 	  React.createClass({
 
 	    componentWillMount() {
@@ -71,13 +71,15 @@ const App = React.createClass({
 	      )
 	    }
 	  })
-	)
+)
 
-	render((
+ReactDOM.render((
 	  <Router history={browserHistory}>
 	    <Route path="/" component={App}>
 	      <Route path="dashboard" component={Dashboard} />
 	      <Route path="form" component={Form} />
 	    </Route>
 	  </Router>
-	), document.getElementById('root'))
+), document.getElementById('root'))
+	
+	
