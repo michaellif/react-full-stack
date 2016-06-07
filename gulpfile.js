@@ -4,6 +4,7 @@ var browserify = require('browserify');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
 var connect = require('gulp-connect');
+var historyApiFallback = require('connect-history-api-fallback');
 
 gulp.task('bundle', function() {
 	browserify({
@@ -34,7 +35,10 @@ gulp.task('connect', function() {
 		root : 'dist',
 		livereload : true,
 		port : 8282,
-		host : 'localhost'
+		host : 'localhost',
+		middleware: function(connect, opt){
+			return [historyApiFallback({})];
+		}
 	});
 });
 
