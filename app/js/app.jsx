@@ -4,7 +4,7 @@ import {browserHistory, Router, Route, Link, withRouter} from 'react-router'
 
 const App = React.createClass({
     render() {
-        return (
+        return ( 
             <div>
                 <ul>
                     <li><Link to="/dashboard" activeClassName="active">Dashboard</Link></li>
@@ -76,8 +76,9 @@ const Form = withRouter(
 ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={App}>
-            <Route path="dashboard" component={Dashboard}/>
-            <Route path="form" component={Form}/>
+            <Route path="/dashboard" component={Dashboard}/>
+            <Route path="/form" component={Form}/>
+            <Route path="/books/:id" name="book" handler={require('./pages/StaticPage')} />
         </Route>
     </Router>
 ), document.getElementById('root'))

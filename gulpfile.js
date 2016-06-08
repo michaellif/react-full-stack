@@ -8,7 +8,7 @@ var historyApiFallback = require('connect-history-api-fallback');
 
 gulp.task('bundle', function() {
 	browserify({
-		entries : './app/js/app.js',
+		entries : './app/js/app.jsx',
 		debug : true
 	}).transform("babelify", {
 		presets : [ "es2015", "react" ]
@@ -22,8 +22,8 @@ gulp.task('nonjs', function() {
 });
 
 gulp.task('watch', [ 'bundle', 'nonjs' ], function() {
-	gulp.watch('app/js/**/*.js', [ 'bundle' ]);
-	gulp.watch('app/**/*.!(js)', [ 'nonjs' ]);
+	gulp.watch('app/js/**/*.jsx?', [ 'bundle' ]);
+	gulp.watch('app/**/*.!(jsx?)', [ 'nonjs' ]);
 });
 
 gulp.task('connect', function() {
